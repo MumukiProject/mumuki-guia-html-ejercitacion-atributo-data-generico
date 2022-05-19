@@ -1,0 +1,66 @@
+/*<output#*//*#output>*/
+/*<tests#*/describe("", function() {
+  context("", () => {
+    describe("", () => {
+      let card1;
+      let card2;
+      let card3;
+      let input;
+      let sexo;
+      
+      beforeEach(() => {
+        _resetDocument_();
+        sexo = document.getElementById("sexo");
+        radios = document.querySelectorAll("input[name=sexo]");
+        card1 = document.createElement('div');
+        card2 = document.createElement('div');
+        card3 = document.createElement('div');
+        document.body.appendChild(card1);
+        document.body.appendChild(card2);
+        document.body.appendChild(card3);
+        card1.setAttribute('class','card');
+        card2.setAttribute('class','card');
+        card3.setAttribute('class','card');
+        card1.setAttribute('data-sexo','hembra');
+        card2.setAttribute('data-sexo','macho');
+        card3.setAttribute('data-sexo','indistinto');
+      });
+      
+      
+      it("Si tengo 1 gatito hembra y filtramos por sexo hembra nos muestra solo esa card", () => {
+        radios[0].checked = true;
+        radios[1].checked = false;
+        radios[2].checked = false;
+        _dispatch_("click", sexo);
+
+        card1.should.be.visible;
+        card2.should.not.be.visible;
+        card3.should.not.be.visible;
+      });
+      
+      it("Si tengo 1 gatito macho y filtramos por sexo macho nos muestra solo esa card", () => {
+        radios[0].checked = false;
+        radios[1].checked = true;
+        radios[2].checked = false;
+        _dispatch_("click", sexo);
+
+        card1.should.not.be.visible;
+        card2.should.be.visible;
+        card3.should.not.be.visible;
+      });
+
+      it("Si tengo 1 gatito de sexo indistinto y filtramos por sexo indistinto nos muestra solo esa card", () => {
+        radios[0].checked = false;
+        radios[1].checked = false;
+        radios[2].checked = true;
+        _dispatch_("click", sexo);
+
+        card1.should.not.be.visible;
+        card2.should.not.be.visible;
+        card3.should.be.visible;
+      });
+    });
+  });  
+});/*#tests>*/
+/*<options#*/output_ignore_scripts: true
+output_ignore_styles: true/*#options>*/

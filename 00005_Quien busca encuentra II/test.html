@@ -1,0 +1,57 @@
+/*<output#*//*#output>*/
+/*<tests#*/describe("", function() {
+  context("", () => {
+    describe("", () => {
+      let card1;
+      let card2;
+      let card3;
+      let input;
+      let color;
+      
+      beforeEach(() => {
+        _resetDocument_();
+        select = document.querySelector('select');
+        card1 = document.createElement('div');
+        card2 = document.createElement('div');
+        card3 = document.createElement('div');
+        document.body.appendChild(card1);
+        document.body.appendChild(card2);
+        document.body.appendChild(card3);
+        card1.setAttribute('class','card');
+        card2.setAttribute('class','card');
+        card3.setAttribute('class','card');
+        card1.setAttribute('data-color','naranja');
+        card2.setAttribute('data-color','blanco');
+        card3.setAttribute('data-color','gris');
+      });
+      
+      
+      it("Si tengo 1 gatito naranja y filtramos por color naranja nos muestra solo esa card", () => {
+        select.value = 'naranja';
+        _dispatch_("change", select);
+        card1.should.be.visible;
+        card2.should.not.be.visible;
+        card3.should.not.be.visible;
+      });
+      
+      it("Si tengo 1 gatito blanco y filtramos por color blanco nos muestra solo esa card", () => {
+        select.value = 'blanco';
+        _dispatch_("change", select);
+        card1.should.not.be.visible;
+        card2.should.be.visible;
+        card3.should.not.be.visible;
+      });
+      
+      it("Si tengo 1 gatito gris y filtramos por color gris nos muestra solo esa card", () => {
+        select.value = 'gris';
+        _dispatch_("change", select);
+        card1.should.not.be.visible;
+        card2.should.not.be.visible;
+        card3.should.be.visible;
+      });
+      
+    });
+  });  
+});/*#tests>*/
+/*<options#*/output_ignore_scripts: true
+output_ignore_styles: true/*#options>*/

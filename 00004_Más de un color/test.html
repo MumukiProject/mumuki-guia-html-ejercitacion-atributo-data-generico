@@ -1,0 +1,83 @@
+/*<output#*//*#output>*/
+/*<tests#*/describe("", function() {
+  context("", () => {
+    describe("", () => {
+      let card1;
+      let card2;
+      let card3;
+      let checkNaranja;
+      let checkBlanco;
+      let checkGris;
+      
+      beforeEach(() => {
+        _resetDocument_();
+        checkNaranja = document.querySelectorAll("input[type='checkbox']")[0];
+        checkBlanco = document.querySelectorAll("input[type='checkbox']")[1];
+        checkGris = document.querySelectorAll("input[type='checkbox']")[2];
+        card1 = document.createElement('div');
+        card2 = document.createElement('div');
+        card3 = document.createElement('div');
+        document.body.appendChild(card1);
+        document.body.appendChild(card2);
+        document.body.appendChild(card3);
+        card1.setAttribute('class','card');
+        card2.setAttribute('class','card');
+        card3.setAttribute('class','card');
+        card1.setAttribute('data-color','naranja');
+        card2.setAttribute('data-color','blanco');
+        card3.setAttribute('data-color','gris');
+      });
+
+      it("Si tengo un gatito naranja y un gatito gris y filtramos por esos dos colores nos muestra solo esas dos cards", () => {
+        checkNaranja.checked = true;
+        checkBlanco.checked = false;
+        checkGris.checked = true;
+        
+        _dispatch_("click", checkNaranja);
+        _dispatch_("click", checkBlanco);
+        _dispatch_("click", checkGris);    
+        card1.should.be.visible;
+        card2.should.not.be.visible;
+        card3.should.be.visible;
+      });
+      
+      it("Si tengo un gatito naranja, un gatito blanco y un gatito gris y filtramos por esos tres colores nos muestra las tres cards", () => {
+        checkNaranja.checked = true;
+        checkBlanco.checked = true;
+        checkGris.checked = true;
+        _dispatch_("click", checkNaranja);
+        _dispatch_("click", checkBlanco);
+        _dispatch_("click", checkGris);
+        card1.should.be.visible;
+        card2.should.be.visible;
+        card3.should.be.visible;
+      });
+      
+      it("Si tengo un gatito gris y filtramos por color gris nos muestra solo esa card", () => {
+        checkNaranja.checked = false;
+        checkBlanco.checked = false;
+        checkGris.checked = true;
+        _dispatch_("click", checkNaranja);
+        _dispatch_("click", checkBlanco);
+        _dispatch_("click", checkGris);
+        card1.should.not.be.visible;
+        card2.should.not.be.visible;
+        card3.should.be.visible;
+      });
+      
+      it("Si no seleccionamos ningún color, no se muestra ninguna card", () => {
+        checkNaranja.checked = false;
+        checkBlanco.checked = false;
+        checkGris.checked = false;
+        _dispatch_("click", checkNaranja);
+        _dispatch_("click", checkBlanco);
+        _dispatch_("click", checkGris);
+        card1.should.not.be.visible;
+        card2.should.not.be.visible;
+        card3.should.not.be.visible;
+      });
+    });
+  });  
+});/*#tests>*/
+/*<options#*/output_ignore_scripts: true
+output_ignore_styles: true/*#options>*/
