@@ -30,7 +30,7 @@
       
       
       it("Si tengo 1 gatito hembra y filtramos por sexo hembra nos muestra solo esa card", () => {
-        _dispatch_("click", radio1);
+        _dispatch_("change", radio1);
 
         card1.should.be.visible;
         card2.should.not.be.visible;
