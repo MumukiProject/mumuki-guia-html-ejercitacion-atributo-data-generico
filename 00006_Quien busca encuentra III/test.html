@@ -6,11 +6,12 @@
       let card2;
       let card3;
       let input;
-      let radios;
+      let sexo;
       
       beforeEach(() => {
         _resetDocument_();
-        
+        sexo = document.getElementById("sexo");
+        radios = document.querySelectorAll("input[name=sexo]");
         card1 = document.createElement('div');
         card2 = document.createElement('div');
         card3 = document.createElement('div');
@@ -23,7 +24,6 @@
         card1.setAttribute('data-sexo','hembra');
         card2.setAttribute('data-sexo','macho');
         card3.setAttribute('data-sexo','indistinto');
-        radios = document.querySelectorAll("input[name=sexo]");
       });
       
       
@@ -31,7 +31,7 @@
         radios[0].checked = true;
         radios[1].checked = false;
         radios[2].checked = false;
-        _dispatch_("click", radios[0]);
+        _dispatch_("click", sexo);
 
         card1.should.be.visible;
         card2.should.not.be.visible;
