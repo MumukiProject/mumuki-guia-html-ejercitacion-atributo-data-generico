@@ -34,25 +34,25 @@
         _dispatch_("change", radio1);
 
         card1.should.be.visible;
-        card2.should.not.be.visible;
-        card3.should.not.be.visible;
+        card2.should.be.visible;
+        card3.should.be.visible;
       });
       
       it("Si tengo 1 gatito macho y filtramos por sexo macho nos muestra solo esa card", () => {
         radio2.checked = true;
         _dispatch_("change", radio2);
 
-        card1.should.not.be.visible;
+        card1.should.be.visible;
         card2.should.be.visible;
-        card3.should.not.be.visible;
+        card3.should.be.visible;
       });
 
       it("Si tengo 1 gatito de sexo indistinto y filtramos por sexo indistinto nos muestra solo esa card", () => {
         radio3.checked = true;
         _dispatch_("change", radio3);
 
-        card1.should.not.be.visible;
-        card2.should.not.be.visible;
+        card1.should.be.visible;
+        card2.should.be.visible;
         card3.should.be.visible;
       });
     });
