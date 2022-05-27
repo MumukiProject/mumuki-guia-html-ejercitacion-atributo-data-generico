@@ -5,13 +5,15 @@
       let card1;
       let card2;
       let card3;
-      let input;
-      let sexo;
-      
+      let radio1;
+      let radio2;
+      let radio3;
+
       beforeEach(() => {
         _resetDocument_();
-        sexo = document.getElementById("sexo");
-        radios = document.querySelectorAll("input[name=sexo]");
+        radio1 = document.querySelector("input[value='hembra']");
+        radio2 = document.querySelector("input[value='macho']");
+        radio3 = document.querySelector("input[value='indistinto']");
         card1 = document.createElement('div');
         card2 = document.createElement('div');
         card3 = document.createElement('div');
@@ -28,10 +30,8 @@
       
       
       it("Si tengo 1 gatito hembra y filtramos por sexo hembra nos muestra solo esa card", () => {
-        radios[0].checked = true;
-        radios[1].checked = false;
-        radios[2].checked = false;
-        _dispatch_("click", sexo);
+        radio1.checked = true;
+        _dispatch_("change", radio1);
 
         card1.should.be.visible;
         card2.should.not.be.visible;
@@ -39,10 +39,8 @@
       });
       
       it("Si tengo 1 gatito macho y filtramos por sexo macho nos muestra solo esa card", () => {
-        radios[0].checked = false;
-        radios[1].checked = true;
-        radios[2].checked = false;
-        _dispatch_("click", sexo);
+        radio2.checked = true;
+        _dispatch_("change", radio2);
 
         card1.should.not.be.visible;
         card2.should.be.visible;
@@ -50,10 +48,8 @@
       });
 
       it("Si tengo 1 gatito de sexo indistinto y filtramos por sexo indistinto nos muestra solo esa card", () => {
-        radios[0].checked = false;
-        radios[1].checked = false;
-        radios[2].checked = true;
-        _dispatch_("click", sexo);
+        radio3.checked = true;
+        _dispatch_("change", radio3);
 
         card1.should.not.be.visible;
         card2.should.not.be.visible;
