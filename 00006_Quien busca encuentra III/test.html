@@ -31,7 +31,7 @@
       
       it("Si tengo 1 gatito hembra y filtramos por sexo hembra nos muestra solo esa card", () => {
         _dispatch_("change", radio1);
-        radio3.value.should.eql("hola");
+        card1.getAttribute("data-sexo").should.eql("hola");
         card1.should.be.visible;
         card2.should.not.be.visible;
         card3.should.not.be.visible;
