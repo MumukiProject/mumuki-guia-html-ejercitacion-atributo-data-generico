@@ -12,7 +12,7 @@
       
       it("Si buscamos a Pippin solo se visualiza Pippin", () => {
         input.value = 'Pippin';
-        _dispatch_("change", input);
+        _dispatch_("input", input);
         document.getElementsByClassName('card')[0].should.not.be.visible;
         document.getElementsByClassName('card')[1].should.not.be.visible;
         document.getElementsByClassName('card')[2].should.be.visible;
@@ -20,7 +20,7 @@
       
       it("Si buscamos a Artilugia solo se visualiza Artilugia", () => {
         input.value = 'Artilugia';
-        _dispatch_("change", input);
+        _dispatch_("input", input);
         document.getElementsByClassName('card')[0].should.be.visible;
         document.getElementsByClassName('card')[1].should.not.be.visible;
         document.getElementsByClassName('card')[2].should.not.be.visible;
@@ -28,7 +28,7 @@
       
       it("Si buscamos a Boris solo se visualiza Boris", () => {
         input.value = 'Boris';
-        _dispatch_("change", input);
+        _dispatch_("input", input);
         document.getElementsByClassName('card')[0].should.not.be.visible;
         document.getElementsByClassName('card')[1].should.be.visible;
         document.getElementsByClassName('card')[2].should.not.be.visible;
